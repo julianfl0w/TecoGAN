@@ -4,7 +4,7 @@ import os, sys
 import pandas as pd
 from LPIPSmodels import util
 import LPIPSmodels.dist_model as dm
-from skimage.measure import compare_ssim
+from skimage.metrics import structural_similarity as compare_ssim
 
 from absl import flags
 flags.DEFINE_string('output', None, 'the path of output directory')
@@ -112,7 +112,8 @@ folder_n = len(result_list)
 
 
 model = dm.DistModel()
-model.initialize(model='net-lin',net='alex',use_gpu=True)
+#model.initialize(model='net-lin',net='alex',use_gpu=True)
+model.initialize(model='net-lin',net='alex',use_gpu=False)
 
 cutfr = 2
 # maxV = 0.4, for line 154-166
